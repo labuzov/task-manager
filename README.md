@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Task Manager (pre-alpha)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://labuzov.github.io/task-manager/
 
 ## Available Scripts
 

@@ -25,6 +25,8 @@ const LoginForm = (props) => {
         >
             { ({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
                 <form className="form">
+                    <div className="form__head-message">Enter any E-Mail and password</div>
+
                     <div className="form__inner">
                         <h1 className="form__title">Login To Your Account</h1>
                         <div className="form__input-wrapper">
@@ -86,6 +88,8 @@ const Login = (props) => {
 
     return (
         <div className="auth">
+            
+
             <LoginForm setAuthUserData={props.setAuthUserData} />
 
             <div className="auth__links-area">

@@ -1,19 +1,32 @@
 .auth {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     padding: 15px;
+
+    
     
 
     .form {
+        position: relative;
         padding: 30px 20px;
         width: 100%;
         max-width: 350px;
         background-color: var(--c-bg-2);
         border-radius: var(--border-radius-block);
         box-shadow: var(--block-shadow);
+
+        &__head-message {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            padding: 10px 20px;
+            background-color: var(--c-bg-2);
+            border-radius: var(--border-radius-block);
+        }
 
         
         &__title {

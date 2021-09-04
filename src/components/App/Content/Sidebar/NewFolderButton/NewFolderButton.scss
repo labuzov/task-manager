@@ -41,6 +41,11 @@
         outline: none;
         background-color: var(--c-bg-1);
         box-sizing: border-box;
+
+        &.error {
+            padding: 4px;
+            border: 1px solid red;
+        }
     }
 
     &__btns {

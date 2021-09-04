@@ -13,15 +13,18 @@
 }
 
 .task {
-    padding: 25px;
+    padding: 23px;
     min-height: 200px;
     background-color: var(--task-bg);
     color: var(--task-text-color);
     border-radius: var(--border-radius-block);
+    border: 2px solid var(--task-bg);
     box-shadow: var(--block-shadow);
+    transition: border .1s;
 
     &:hover {
         cursor: pointer;
+        border-color: var(--c-accent);
     }
 
     &__title {

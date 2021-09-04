@@ -3,16 +3,16 @@ import * as axios from 'axios';
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+    baseURL: '',
     headers: {
-        "API-KEY": "f29bc66b-e3a5-46c7-8bfc-39f9ef12838f"
+        "API-KEY": ""
     }
 })
 
 
 export const authAPI = {
-    getAuthData() {
-        return instance.get(`auth/me`)
+    getAuthData() {     
+        return instance.get(`auth/me`)                  
     },
 
     login(email, password, rememberMe = false) {

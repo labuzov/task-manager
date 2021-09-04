@@ -40,27 +40,41 @@ export const setAuthUserData = (id, email, login, isAuth) => ({
 
 
 export const runAuth = () => async (dispatch) => {
-    const response = await authAPI.getAuthData();
+    try {
+        const response = await authAPI.getAuthData();
 
-    if (response.data.resultCode === 0) {
-        let {id, email, login} = response.data.data;
-        
-        dispatch(setAuthUserData(id, email, login, true));
+        if (response.data.resultCode === 0) {
+            let {id, email, login} = response.data.data;
+            
+            dispatch(setAuthUserData(id, email, login, true));
+        }
+    } catch {
+        console.log('auth error');
     }
 }
 
 export const login = (email, password, rememberMe) => async (dispatch) => {
-    const response = await authAPI.login(email, password, rememberMe)
-
-    if (response.data.resultCode === 0) {
-        dispatch(runAuth());
+    try {
+        const response = await authAPI.login(email, password, rememberMe)
+    
+        if (response.data.resultCode === 0) {
+            dispatch(runAuth());
+        }
+    } catch {
+        console.log('login error');
     }
 }
 
 export const logout = () => async (dispatch) => {
-    const response = await authAPI.logout()
+    try {
+        const response = await authAPI.logout()
+    
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false));
+        }
+    } catch {
+        console.log('logout error');
 
-    if (response.data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false));
     }
 }

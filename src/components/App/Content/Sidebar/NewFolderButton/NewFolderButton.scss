@@ -1,0 +1,57 @@
+.new-folder-btn,
+.new-folder {
+    padding: 12px var(--list-offset-middle);
+}
+
+.new-folder-btn {
+    display: flex;
+    align-items: center;
+    
+    &:hover {
+        cursor: pointer;
+    }
+    
+    
+    &__text {
+        font-weight: 500;
+        color: var(--c-accent);
+
+    }
+
+    &__icon {
+        svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+    
+            path {
+                fill: var(--c-accent);
+            }
+        }
+    }
+}
+
+.new-folder {
+    &__input {
+        padding: 5px;
+        width: 100%;
+        font: inherit;
+        color: inherit;
+        border: none;
+        outline: none;
+        background-color: var(--c-bg-1);
+        box-sizing: border-box;
+    }
+
+    &__btns {
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__cancel-btn,
+    &__add-btn {
+        padding: 8px 15px;
+        margin: 0 10px;
+    }
+}

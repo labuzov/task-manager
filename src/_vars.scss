@@ -1,0 +1,77 @@
+:root {
+    --c-bg-1: #f1f1f1;
+    --c-bg-2: #fdfdfd;
+    --c-text-primary: #11142D;
+    --c-text-secondary: #808080;
+    --c-preloader-bg: rgba(255, 255, 255, .7);
+    --c-blue: rgb(29, 161, 242);
+    --c-blue-hover: rgba(29, 161, 242, .8);
+    --c-tip-bg: #8b8b8b;
+    --c-tip-text: #fff;
+    --c-accent: var(--c-blue);
+    --c-grey: #8b8b8b;
+    --c-grey-hover: #8b8b8bcb;
+    
+    // header
+    --c-header-bg: #212121;
+    --c-header-text: #ffffffde;
+    --c-header-icon: #ffffffde;
+    --c-header-icon-bg-hover: #ffffff33;
+    --header-height: 56px;
+    
+    // content
+    --content-padding: 30px;
+    --content-padding-table: 25px;
+    --content-padding-phone: 20px;
+    
+    // sidebar
+    --sidebar-width: 300px;
+    
+    // list
+    --list-offset-middle: 24px;
+    --c-list-btn-bg-hover: rgba(0, 0, 0, .05);
+    --c-list-btn-icon: #909090;
+    --c-list-btn-icon-active: #212121;
+    
+
+    // task default
+    --task-bg: var(--c-bg-2);
+    --task-title-color: var(--c-text-primary);
+    --task-text-color: var(--c-text-primary);
+
+    --c-border: #e5e7eb;
+
+    --border-radius-block: 20px;
+    --border-radius-btn: 50px;
+    --border-radius-menu: 4px;
+
+    --block-shadow: 0 0 10px 0 #e3e6ec96;
+
+}
+
+body[data-theme="dark"] {
+    --c-bg-1: #181818;
+    --c-bg-2: #212121;
+    --c-text-primary: #ffffffde;
+    --c-text-secondary: #aaa;
+    --c-preloader-bg: rgba(0, 0, 0, .7);
+
+    // header
+    --c-header-bg: #212121;
+    --c-header-text: #ffffffde;
+    --c-header-icon: #ffffffde;
+    --c-header-icon-bg-hover: #ffffff33;
+
+    // list
+    --c-list-btn-bg-hover: rgba(255, 255, 255, .1);
+    --c-list-btn-icon-active: #ffffffde;
+
+    // task
+    --task-bg: var(--c-bg-2);
+    --task-title-color: var(--c-text-primary);
+    --task-text-color: var(--c-text-primary);
+
+    --c-border: #424242;
+
+    --block-shadow: 0 0 5px 0 #1c1c1c83;
+}

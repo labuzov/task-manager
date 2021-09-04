@@ -1,0 +1,59 @@
+.header {
+    background-color: var(--c-header-bg);
+    color: var(--c-header-text);
+    height: var(--header-height);
+    box-shadow: var(--block-shadow);
+    
+    &__container {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        height: 100%;
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        margin-left: 18px;
+        padding: 5px;
+        font-size: 24px;
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        border-radius: 4px;
+        transition: .05s;
+
+        &:hover {
+            background-color: var(--c-header-icon-bg-hover);
+        }
+
+        path {
+            fill: var(--c-header-icon);
+        }
+    }
+
+    .settings-btn {
+        svg {
+            transform: rotate(0);
+            transition: .2s;
+        }
+        
+        &.active {
+            svg {
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+
+    
+}

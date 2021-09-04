@@ -1,0 +1,56 @@
+.settings {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 99;
+    padding: 8px 0;
+    min-width: 280px;
+    border-radius: var(--border-radius-menu);
+    background-color: var(--c-bg-2);
+    color: var(--c-text-primary);
+    box-shadow: var(--block-shadow);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .1s, visibility .1s;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__list {
+        &:not(:first-child) {
+            padding-top: 8px;
+        }
+
+        &:not(:last-child) {
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--c-border);
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 12px 30px 12px 20px;
+        transition: .1s;
+
+        &:hover {
+            background-color: var(--c-list-btn-bg-hover);
+            cursor: pointer;
+        }
+    }
+
+    &__icon {
+        margin-right: 15px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+
+            path {
+                fill: var(--c-list-btn-icon);
+            }
+        }
+    }
+}

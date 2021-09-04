@@ -1,0 +1,60 @@
+.workspace {
+    background-color: var(--c-bg-1);
+    margin-left: calc(var(--sidebar-width) + var(--content-padding));
+    width: 100%;
+    height: 100%;
+    transition: margin-left .3s;
+    overflow-y: auto;
+
+    @media (max-width: 768px) {
+        margin-left: 0;
+    }
+    
+    &.full-width {
+        margin-left: 0;
+    }
+    
+    &__container {
+        padding: var(--content-padding);
+        margin: 0 auto;
+        max-width: 860px;
+
+        @media (max-width: 768px) {
+            padding: var(--content-padding-table);
+        }
+
+        @media (max-width: 425px) {
+            padding: var(--content-padding-phone);
+        }
+    }
+
+}
+
+.tasks {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: var(--content-padding);
+
+        @media (max-width: 768px) {
+            padding-bottom: var(--content-padding-table);
+        }
+
+        @media (max-width: 425px) {
+            padding-bottom: var(--content-padding-phone);
+        }
+    }
+
+    &__title {
+        font-size: 36px;
+        font-weight: 700;
+    }
+
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: -20px -20px 0;
+    }
+
+}

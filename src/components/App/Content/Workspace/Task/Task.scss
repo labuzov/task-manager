@@ -1,0 +1,40 @@
+.task-wrapper {
+    width: 100%;
+    max-width: calc(100%/3);
+    padding: 20px;
+
+    @media (max-width: 992px) {
+        max-width: calc(100%/2);
+    }
+
+    @media (max-width: 425px) {
+        max-width: 100%;
+    }
+}
+
+.task {
+    padding: 25px;
+    min-height: 200px;
+    background-color: var(--task-bg);
+    color: var(--task-text-color);
+    border-radius: var(--border-radius-block);
+    box-shadow: var(--block-shadow);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &__title {
+        margin-bottom: 10px;
+        margin-right: 30px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 26px;
+        color: var(--task-title-color);
+    }
+    
+    &__descr {
+
+        line-height: 24px;
+    }
+}

@@ -32,14 +32,14 @@ const Settings = (props, ref) => {
     return (
         <div ref={settingsRef} className={`settings ${props.optionalClass}`}>
             <div className="settings__inner">
-                <ul className="settings__list">
+                <ul className="settings__list-block">
                     <li className="settings__item" onClick={changeTheme}>
                         <div className="settings__icon">
                             <SvgSelector id="theme" /></div>
                             Dark Mode
                     </li>
                 </ul>
-                <ul className="settings__list">
+                <ul className="settings__list-block">
                     <li className="settings__item" onClick={props.logout}>
                         <div className="settings__icon"><SvgSelector id="logout" /></div>
                         Exit

@@ -1,28 +1,34 @@
 .sidebar-item {
     position: relative;
-    display: flex;
-    align-items: center;
-    padding: 12px var(--list-offset-middle);
-    transition: background-color .1s;
 
-    &:hover {
-        background-color: var(--c-list-btn-bg-hover);
+    &__link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 12px var(--list-offset-middle);
+        transition: background-color .1s;
 
-        .options {
-            opacity: 1;
-            visibility: visible;
+        &.active {
+            background-color: var(--c-list-btn-bg-hover);
+    
+            .sidebar-item__icon {
+                path {
+                    fill: var(--c-list-btn-icon-active);
+                }
+            }
         }
-    }
 
-    &.active {
-        background-color: var(--c-list-btn-bg-hover);
-
-        .sidebar-item__icon {
-            path {
-                fill: var(--c-list-btn-icon-active);
+        &:hover {
+            background-color: var(--c-list-btn-bg-hover);
+    
+            .options {
+                opacity: 1;
+                visibility: visible;
             }
         }
     }
+
+
 
     &__icon {
         display: flex;
@@ -36,13 +42,20 @@
             }
         }
     }
+
+    &__list {
+        position: absolute;
+        top: 50px;
+        right: 10px;    
+        z-index: 100;
+    }
 }
 
 .options {
     position: absolute;
     top: 50%;
     right: 20px;
-    z-index: 99;
+    z-index: 10;
     transform: translateY(-50%);
     opacity: 0;
     visibility: hidden;
@@ -59,7 +72,6 @@
         
         &:hover {
             background-color: var(--c-list-btn-bg-hover);
-
         }
 
         
@@ -67,6 +79,39 @@
             width: 20px;
             height: 20px;
             fill: var(--c-list-btn-icon);
+        }
+
+    }
+}
+
+.options-list {
+    display: block;
+    padding: 8px 0;
+    background-color: var(--c-bg-2);
+    border-radius: var(--border-radius-menu);
+    box-shadow: var(--options-block-shadow);
+    
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        min-height: 36px;
+        min-width: 150px;
+        transition: background-color .1s;
+
+        &:hover {
+            cursor: pointer;
+            background-color: var(--c-list-btn-bg-hover);
+        }
+    }
+
+    &__icon {
+        margin-right: 16px;
+
+        svg {
+            path {
+                fill: var(--c-list-btn-icon);
+            }
         }
     }
 }

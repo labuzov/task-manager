@@ -33,20 +33,21 @@
     --c-list-btn-icon: #909090;
     --c-list-btn-icon-active: #212121;
     
-
     // task default
     --task-bg: var(--c-bg-2);
     --task-title-color: var(--c-text-primary);
     --task-text-color: var(--c-text-primary);
 
+    
     --c-border: #e5e7eb;
-
+    
     --border-radius-block: 20px;
     --border-radius-btn: 50px;
     --border-radius-menu: 4px;
-
+    
     --block-shadow: 0 0 10px 0 #e3e6ec96;
-
+    --options-block-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    
 }
 
 body[data-theme="dark"] {

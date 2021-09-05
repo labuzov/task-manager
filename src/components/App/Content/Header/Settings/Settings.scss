@@ -18,7 +18,7 @@
         visibility: visible;
     }
 
-    &__list {
+    &__list-block {
         &:not(:first-child) {
             padding-top: 8px;
         }

@@ -1,8 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { deleteFolder } from '../../../../../redux/reducers/tasks-reducer';
 import SvgSelector from '../../../../common/SvgSelector/SvgSelector';
 import './SidebarItem.scss';
 
+
+const OptionsItem = (props) => {
+    return (
+        <div className="options-list__item" onClick={props.fn}>
+            <div className="options-list__icon">
+                <SvgSelector id={props.svg} />
+            </div>
+            {props.title}
+        </div>
+    )
+}
 
 const SidebarItem = (props) => {
     const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -22,10 +35,10 @@ const SidebarItem = (props) => {
             }
         }
 
-        document.addEventListener('mousedown', mouseClick)
+        document.addEventListener('mousedown', mouseClick);
 
         return () => {
-            document.removeEventListener('mousedown', mouseClick)
+            document.removeEventListener('mousedown', mouseClick);
         }
     })
 
@@ -49,21 +62,11 @@ const SidebarItem = (props) => {
 
             </NavLink>
 
-            {menuIsOpen && 
+            {menuIsOpen &&
                 <div className="sidebar-item__list options-list" ref={optionsRef}>
                     <div className="options-list__inner">
-                        <div className="options-list__item">
-                            <div className="options-list__icon">
-                                <SvgSelector id="edit" />
-                            </div>
-                            Edit
-                        </div>
-                        <div className="options-list__item">
-                            <div className="options-list__icon">
-                                <SvgSelector id="delete" />
-                            </div>
-                            Delete
-                        </div>
+                        {/* <OptionsItem title="Edit" svg="edit" /> */}
+                        <OptionsItem title="Delete" svg="delete" fn={() => props.deleteFolder(props.id)} />
                     </div>
                 </div>
             }
@@ -72,4 +75,4 @@ const SidebarItem = (props) => {
 }
 
 
-export default SidebarItem;
+export default connect(null, {deleteFolder})(SidebarItem);

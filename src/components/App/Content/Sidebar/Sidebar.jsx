@@ -11,7 +11,7 @@ function Sidebar(props) {
         <SidebarItem route={`/app/${id}`} svgId={id} title={title} key={id} />)
 
     const customFolders = props.customFolders.map(({id, title}) => 
-        <SidebarItem route={`/app/${id}`} svgId="folder" title={title} key={id} custom={true} />)
+        <SidebarItem route={`/app/${id}`} svgId="folder" title={title} key={id} custom={true} id={id} />)
 
 
     return (

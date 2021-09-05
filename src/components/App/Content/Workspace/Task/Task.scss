@@ -20,7 +20,6 @@
     border-radius: var(--border-radius-block);
     border: 2px solid var(--task-bg);
     box-shadow: var(--block-shadow);
-    transition: border .1s;
 
     &:hover {
         cursor: pointer;

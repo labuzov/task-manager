@@ -2,6 +2,7 @@ const ADD_NEW_TASK      = 'tasks/ADD_NEW_TASK';
 const TOGGLE_IS_DONE    = 'tasks/TOGGLE_IS_DONE';
 const SET_CURRENT_TASKS = 'tasks/SET_CURRENT_TASKS';
 const ADD_NEW_FOLDER    = 'tasks/ADD_NEW_FOLDER';
+const DELETE_FOLDER     = 'tasks/DELETE_FOLDER';
 
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
             title: 'Task #1',
             descr: 'something',
             isDone: false,
-            folder: 1,
+            folder: '2',
             date: {
                 month: '0',
                 day: '10',
@@ -37,7 +38,7 @@ const initialState = {
             title: 'Task #3',
             descr: 'something',
             isDone: false,
-            folder: 2,
+            folder: '2',
             date: {
                 month: '0',
                 day: '10',
@@ -111,6 +112,14 @@ const taskReducer = (state = initialState, action) => {
             }
         }
 
+        case DELETE_FOLDER: {
+            return {
+                ...state,
+                folders: state.folders.filter(i => i.id !== action.id),
+                data: state.data.filter(i => i.folder !== action.id),
+            }
+        }
+
         default:
             return state;
     }
@@ -145,6 +154,11 @@ export const addNewFolder = (id, title) => ({
         title,
         type: 'custom',
     },
+})
+
+export const deleteFolder = (id) => ({
+    type: DELETE_FOLDER,
+    id,
 })
 
 // export const initializedSuccess = () => ({

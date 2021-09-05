@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 import { setCurrentFolder } from '../../../../redux/reducers/settings-reducer';
 import { addNewTask, setCurrentTasks, toggleIsDone } from '../../../../redux/reducers/tasks-reducer';
@@ -13,30 +13,37 @@ import './Workspace.scss';
 function Workspace(props) {
     const { folderId } = useParams();
 
-    useEffect(() => {
+
+    const changeCurrentFolder = (folder) => {
+        document.title = folder.title;
+
+        props.setCurrentFolder(folder);
         
+        const taskFilter = props.tasksData.filter(i =>
+            (!i.isDone && (i.folder == folderId)) || (!i.isDone && folderId === 'home')
+        );
+
+        props.setCurrentTasks(taskFilter);
+    }
+    
+    useEffect(() => { 
+
         const currentFolder = props.folders.find(i => i.id == folderId);
         
         if (currentFolder) {
-            document.title = currentFolder.title;
-
-            props.setCurrentFolder(currentFolder);
-           
-            const taskFilter = props.tasksData.filter(i =>
-                (!i.isDone && (i.folder == folderId)) || (!i.isDone && folderId === 'home')
-            );
-    
-            props.setCurrentTasks(taskFilter);
+            changeCurrentFolder(currentFolder);
+        } else {
+            props.setCurrentFolder(null);
         }
         
     }, [folderId, props.tasksData])
 
 
-    const taskList = props.currentTasks.map((i) => <Task id={i.id} title={i.title} descr={i.descr} key={i.id}
+    if (!props.currentFolder) return <Redirect to="home" />
+
+    const taskList = props.currentTasks.map(i => <Task id={i.id} title={i.title} descr={i.descr} key={i.id}
         toggleIsDone={props.toggleIsDone} />)
-
-    if (!props.currentFolder) return <div>404</div>
-
+    
     return (
         <section className={"workspace" + (props.sidebarIsOpen ? "" : " full-width")}>
             <div className="workspace__container">

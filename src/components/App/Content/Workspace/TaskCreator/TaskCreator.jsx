@@ -1,3 +1,5 @@
+import { Formik } from 'formik';
+import * as yup from 'yup';
 import { useState } from 'react';
 import getNewId from '../../../../../utils/getNewId';
 import SvgSelector from '../../../../common/SvgSelector/SvgSelector';
@@ -6,20 +8,23 @@ import './TaskCreator.scss';
 
 function TaskCreator(props) {
     let [isActive, setIsActive] = useState(false);
-    let [title, editTitle] = useState('');
-    let [descr, editDescr] = useState('');
 
 
-
-    const addNewTask = () => {
-        props.addNewTask(getNewId(props.tasksData), title, descr, props.currentFolder.id); 
+    const addNewTask = (title, text) => {
+        props.addNewTask(getNewId(props.tasksData), title, text, props.currentFolder.id); 
     }
 
-    const resetLocalState = () => {
-        setIsActive(false);
-        editTitle('');
-        editDescr('');
-    }
+
+    const validations = yup.object().shape({
+        title: yup.string()
+            .typeError('Must be a string')
+            .required('Title is required')
+            .max(20, 'Max length is 20 symbols'),
+        text: yup.string()
+            .typeError('Must be a string')
+            .required('Description is required')
+            .max(100, 'Max length is 100 symbols'),
+    })
 
     return (
         <div className="task-wrapper">
@@ -30,18 +35,42 @@ function TaskCreator(props) {
                     </div>          
                 }
                 {isActive && 
-                    <div className="active-task-creator">
-                        <input className="active-task-creator__title task__title" placeholder="Title"
-                        value={title} onChange={(e) => { editTitle(e.currentTarget.value); }} />
-                        <textarea className="active-task-creator__descr task__descr" placeholder="Description"
-                        value={descr} onChange={(e) => { editDescr(e.currentTarget.value); }} />
-                        <div className="active-task-creator__bottom">
-                            <button className="active-task-creator__cancel-btn btn-type-2"
-                            onClick={() => { resetLocalState(); }}>Cancel</button>
-                            <button className="active-task-creator__add-btn btn-type-1"
-                            onClick={() => { addNewTask(); resetLocalState(); }}>Add</button>
-                        </div>
-                    </div>    
+                    <Formik
+                        initialValues={{
+                            title: '',
+                            text: '',
+                        }}
+                        validationSchema={validations}
+                        onSubmit={ (values) => {
+                            setIsActive(false); 
+                            
+                            addNewTask(values.title, values.text);
+                        }}
+                    >
+                        { ({ values, errors, handleChange, isValid, handleSubmit, dirty }) => (
+                            <form className="active-task-creator">
+                                <input className="active-task-creator__title task__title" 
+                                    name="title"
+                                    placeholder="Title"
+                                    onChange={handleChange}
+                                    value={values.title} 
+                                    autoFocus />
+                                <textarea className="active-task-creator__descr task__descr" 
+                                    name="text"
+                                    placeholder="Description"
+                                    value={values.text} 
+                                    onChange={handleChange} />
+                                <div className="active-task-creator__bottom">
+                                    <button className="active-task-creator__cancel-btn btn-type-2"
+                                        onClick={() => { setIsActive(false); }}>Cancel</button>
+                                    <button className="active-task-creator__add-btn btn-type-1"
+                                        disabled={!isValid && !dirty}
+                                        type="submit"
+                                        onClick={handleSubmit}>Add</button>
+                                </div>
+                            </form>    
+                        ) }
+                    </Formik>
                 }
             </div>
         </div>

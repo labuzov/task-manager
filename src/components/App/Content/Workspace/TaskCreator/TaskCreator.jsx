@@ -6,8 +6,8 @@ import SvgSelector from '../../../../common/SvgSelector/SvgSelector';
 import './TaskCreator.scss';
 
 
-function TaskCreator(props) {
-    let [isActive, setIsActive] = useState(false);
+const TaskCreator = (props) => {
+    const [isActive, setIsActive] = useState(false);
 
 
     const addNewTask = (title, text) => {
@@ -43,7 +43,7 @@ function TaskCreator(props) {
                         validationSchema={validations}
                         onSubmit={ (values) => {
                             setIsActive(false); 
-                            
+
                             addNewTask(values.title, values.text);
                         }}
                     >

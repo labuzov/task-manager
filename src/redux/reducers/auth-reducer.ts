@@ -2,8 +2,18 @@ import { authAPI } from "../../api/api";
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 
+type infoType = {
+    userId: number | null,
+    email: string | null,
+    login: string | null,
+}
 
-const initialState = {
+export type initialStateType = {
+    isAuth: boolean,
+    info: infoType,
+}
+
+const initialState: initialStateType = {
     isAuth: false,
     info: {
         userId: null,
@@ -12,7 +22,7 @@ const initialState = {
     },
 }
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action: any): initialStateType => {
     
     switch(action.type) {
         case SET_USER_DATA: {
@@ -28,18 +38,31 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserData = (id, email, login, isAuth) => ({
+type setAuthUserDataType = (
+    userId: number | null, 
+    email: string | null, 
+    login: string | null, 
+    isAuth: boolean
+) => setAuthUserDataActionType;
+
+type setAuthUserDataActionType = {
+    type: typeof SET_USER_DATA,
+    isAuth: boolean,
+    info: infoType
+}
+
+export const setAuthUserData: setAuthUserDataType = (userId, email, login, isAuth): setAuthUserDataActionType => ({
     type: SET_USER_DATA,
     isAuth,
     info: {
-        id,
+        userId,
         email,
         login,
     },
 })
 
 
-export const runAuth = () => async (dispatch) => {
+export const runAuth = () => async (dispatch: any) => {
     try {
         const response = await authAPI.getAuthData();
 
@@ -53,7 +76,7 @@ export const runAuth = () => async (dispatch) => {
     }
 }
 
-export const login = (email, password, rememberMe) => async (dispatch) => {
+export const login = (email: string, password: string, rememberMe: boolean) => async (dispatch: any) => {
     try {
         const response = await authAPI.login(email, password, rememberMe)
     
@@ -65,7 +88,7 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
     }
 }
 
-export const logout = () => async (dispatch) => {
+export const logout = () => async (dispatch: any) => {
     try {
         const response = await authAPI.logout()
     

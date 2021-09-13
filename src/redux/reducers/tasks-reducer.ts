@@ -4,6 +4,13 @@ const SET_CURRENT_TASKS = 'tasks/SET_CURRENT_TASKS';
 const ADD_NEW_FOLDER    = 'tasks/ADD_NEW_FOLDER';
 const DELETE_FOLDER     = 'tasks/DELETE_FOLDER';
 
+type taskType = {
+    id: string,
+    title: string,
+    descr: string,
+    isDone: boolean,
+    folder: string,
+}
 
 const initialState = {
     data: [
@@ -13,12 +20,6 @@ const initialState = {
             descr: 'something',
             isDone: false,
             folder: '2',
-            date: {
-                month: '0',
-                day: '10',
-                hours: '9',
-                minutes: '45'
-            }
         },
         {
             id: '2',
@@ -26,12 +27,6 @@ const initialState = {
             descr: 'something',
             isDone: false,
             folder: 'work',
-            date: {
-                month: '0',
-                day: '10',
-                hours: '9',
-                minutes: '45'
-            }
         },
         {
             id: '3',
@@ -39,12 +34,6 @@ const initialState = {
             descr: 'something',
             isDone: false,
             folder: '2',
-            date: {
-                month: '0',
-                day: '10',
-                hours: '9',
-                minutes: '45'
-            }
         },
     ], 
     currentTasks: [],
@@ -78,7 +67,7 @@ const initialState = {
     
 }
 
-const taskReducer = (state = initialState, action) => {
+const taskReducer = (state = initialState, action: any) => {
     switch(action.type) {
         case ADD_NEW_TASK: {
             return {
@@ -125,7 +114,12 @@ const taskReducer = (state = initialState, action) => {
     }
 }
 
-export const addNewTask = (id, title, descr, folder) => ({
+type addNewTaskActionType = {
+    type: typeof ADD_NEW_TASK,
+    newTask: taskType,
+}
+
+export const addNewTask = (id: string, title: string, descr: string, folder: string): addNewTaskActionType => ({
     type: ADD_NEW_TASK,
     newTask: {
         id,
@@ -136,18 +130,24 @@ export const addNewTask = (id, title, descr, folder) => ({
     },
 })
 
-export const toggleIsDone = (id, isDone) => ({
+type toggleIsDoneActionType = {
+    type: typeof TOGGLE_IS_DONE,
+    id: string,
+    isDone: boolean,
+}
+
+export const toggleIsDone = (id: string, isDone: boolean): toggleIsDoneActionType => ({
     type: TOGGLE_IS_DONE,
     id,
     isDone,
 })
 
-export const setCurrentTasks = (data) => ({
+export const setCurrentTasks = (data: any) => ({
     type: SET_CURRENT_TASKS,
     data,
 })
 
-export const addNewFolder = (id, title) => ({
+export const addNewFolder = (id: string, title: string) => ({
     type: ADD_NEW_FOLDER,
     folder: {
         id,
@@ -156,7 +156,7 @@ export const addNewFolder = (id, title) => ({
     },
 })
 
-export const deleteFolder = (id) => ({
+export const deleteFolder = (id: string) => ({
     type: DELETE_FOLDER,
     id,
 })
